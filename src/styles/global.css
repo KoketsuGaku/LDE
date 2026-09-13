@@ -1,0 +1,225 @@
+/* ============================================================
+   conlang-dev / global.css
+   デザイントークン・グローバルスタイル
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ---------- CSS カスタムプロパティ ---------- */
+:root {
+  /* カラー */
+  --bg-base:       #0f1117;
+  --bg-panel:      #161b27;
+  --bg-card:       #1e2536;
+  --bg-hover:      #252d42;
+  --bg-active:     #2a3550;
+
+  --border:        #2e3a52;
+  --border-focus:  #5b7fc4;
+
+  --text-primary:  #e2e8f4;
+  --text-secondary:#8a9ac0;
+  --text-muted:    #4e5e80;
+
+  --accent:        #5b7fc4;
+  --accent-hover:  #6e90d4;
+  --accent-dim:    rgba(91, 127, 196, 0.15);
+
+  --danger:        #c45b6e;
+  --danger-dim:    rgba(196, 91, 110, 0.15);
+  --success:       #5bc49a;
+
+  /* タイポグラフィ */
+  --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --text-xs:   0.72rem;
+  --text-sm:   0.85rem;
+  --text-base: 0.95rem;
+  --text-lg:   1.1rem;
+  --text-xl:   1.3rem;
+
+  /* スペーシング */
+  --gap-xs:  4px;
+  --gap-sm:  8px;
+  --gap-md:  14px;
+  --gap-lg:  22px;
+  --gap-xl:  32px;
+
+  /* レイアウト */
+  --sidebar-width:  200px;
+  --panel-width:    260px;
+  --radius-sm:      4px;
+  --radius-md:      8px;
+  --radius-lg:      12px;
+}
+
+/* ---------- リセット ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- スクロールバー ---------- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ---------- フォームリセット ---------- */
+input, textarea, select {
+  font-family: inherit;
+  font-size: var(--text-sm);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--border-focus);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+/* ---------- ボタン ---------- */
+button {
+  font-family: inherit;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 6px 14px;
+  transition: background 0.12s, opacity 0.12s;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover:not(:disabled) { background: var(--accent-hover); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover:not(:disabled) { background: var(--bg-hover); color: var(--text-primary); }
+
+.btn-danger {
+  background: var(--danger-dim);
+  color: var(--danger);
+  border: 1px solid transparent;
+}
+.btn-danger:hover:not(:disabled) { background: var(--danger); color: #fff; }
+
+.btn-icon {
+  background: transparent;
+  color: var(--text-muted);
+  padding: 4px 6px;
+  font-size: var(--text-base);
+  border-radius: var(--radius-sm);
+}
+.btn-icon:hover:not(:disabled) { background: var(--bg-hover); color: var(--text-primary); }
+
+/* ---------- バッジ ---------- */
+.badge {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  padding: 2px 7px;
+  border-radius: 99px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* ---------- セクションタイトル ---------- */
+.section-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-bottom: var(--gap-sm);
+}
+
+/* ---------- フォームグループ ---------- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  margin-bottom: var(--gap-md);
+}
+
+.form-group label {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ---------- ディバイダー ---------- */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: var(--gap-md) 0;
+}
+
+/* ---------- 空状態 ---------- */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-sm);
+  padding: var(--gap-xl);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  text-align: center;
+  height: 100%;
+}
+
+/* ---------- モノスペース（ID表示など） ---------- */
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* ---------- スクロール可能エリア ---------- */
+.scrollable {
+  overflow-y: auto;
+  flex: 1 1 0;
+  min-height: 0;
+}
