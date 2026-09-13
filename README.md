@@ -1,2 +1,0 @@
-# LDE
-Language Development Environment
